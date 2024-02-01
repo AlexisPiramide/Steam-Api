@@ -40,9 +40,23 @@ export default class CestaRepositorySQL implements CestaRepository {
         }
     }
     update(cesta: Cesta): Promise<Cesta | undefined> {
-        throw new Error("Method not implemented.");
+        let Query = `UPDATE cesta SET estado='${true}' WHERE id='${cesta.id}'`;
+        try{
+            let result  = executeQuery(Query);
+            return result;
+        }catch(e){
+            console.log(e)
+            return Promise.resolve(undefined);
+        }
     }
     delete(cesta: Cesta): Promise<Cesta | undefined> {
-        throw new Error("Method not implemented.");
+        let Query = `DELETE FROM cesta WHERE id='${cesta.id}'`;
+        try{
+            let result  = executeQuery(Query);
+            return result;
+        }catch(e){
+            console.log(e)
+            return Promise.resolve(undefined);
+        }
     }
 }

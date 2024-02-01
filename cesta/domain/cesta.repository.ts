@@ -1,7 +1,7 @@
 import Usuario from "../../usuario/domain/usuario";
 import Videojuego from "../../videojuego/domain/videojuego";
 import Cesta from "./cesta";
-import Estado from "./cesta";
+
 
 export default interface CestaRepository {
     get(usuario: Usuario, estado: boolean): Promise <Cesta | Cesta [] | undefined>;
