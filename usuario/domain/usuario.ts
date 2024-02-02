@@ -1,5 +1,5 @@
 export default interface Usuario{
-    id: String;
-    nombre: String;
-    contraseña: String;
+    id?: string;
+    nombre: string;
+    contraseña: string;
 }

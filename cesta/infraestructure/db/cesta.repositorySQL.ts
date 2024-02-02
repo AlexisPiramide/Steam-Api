@@ -40,7 +40,7 @@ export default class CestaRepositorySQL implements CestaRepository {
         }
     }
     update(cesta: Cesta): Promise<Cesta | undefined> {
-        let Query = `UPDATE cesta SET estado='${true}' WHERE id='${cesta.id}'`;
+        let Query = `UPDATE cesta SET estado='${true}', set fecha='' WHERE id='${cesta.id}'`;
         try{
             let result  = executeQuery(Query);
             return result;

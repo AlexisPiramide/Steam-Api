@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 
 import UsuarioRepository from "../../domain/usuario.repository";
-import UsuarioRepositorySQL from "../db/cesta.repositorySQL";
+import UsuarioRepositorySQL from "../db/usuario.repositorySQL";
 import UsuarioUseCases from "../../aplication/usuario.usecases";
 
 const usuarioRepository: UsuarioRepository = new UsuarioRepositorySQL();
