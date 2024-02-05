@@ -14,11 +14,11 @@ const router = express.Router();
 router.get("/get/:{tipo}", async (req: Request, res: Response) => {
     let usuario = JSON.parse(req.body.usuario);
     let tipo = String(req.params.tipo);
-    let estado;
+    let estado: boolean = false;
     if (tipo == "Compra") {
-        estado = "true";
+        estado = true;
     }if(tipo == "Cesta") {
-        estado = "false";
+        estado = false;
     }else{
         res.json("Error, solo se puede buscar por Compra o Cesta");
     }
