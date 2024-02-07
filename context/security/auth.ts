@@ -30,6 +30,7 @@ const isAuth = (req: Request, response: Response, next: NextFunction) => {
     console.error(err);
     response.status(401).json({ mensaje: "No autorizado" });
   }
+  console.log("Fin Autorizacion")
 };
 
 export { decode, createToken, isAuth };

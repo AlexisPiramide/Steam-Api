@@ -11,9 +11,12 @@ const cestasUseCases: CestaUseCases = new CestaUseCases(cestasRepository);
 
 const router = express.Router();
 
-router.get("/get/:{tipo}",isAuth, async (req: Request, res: Response) => {
-    let usuario = JSON.parse(req.body.usuario);
+router.get("/get/:tipo",isAuth, async (req: Request, res: Response) => {
+    console.log(1)
+    let usuario = JSON.parse(req.body);
+    console.log(2)
     let tipo = String(req.params.tipo);
+    console.log(3)
     let estado: boolean = false;
     if (tipo == "Compra") {
         estado = true;
@@ -36,9 +39,9 @@ router.post("/add", isAuth, async (req: Request, res: Response) => {
 
     let Juego = JSON.parse(req.body.videojuego);
     let Usuario = JSON.parse(req.body.usuario);
-
     let result = await cestasUseCases.add(Juego,Usuario);
     res.json(result);
+
 });
 
 router.post("/update", isAuth, async (req: Request, res: Response) => {
