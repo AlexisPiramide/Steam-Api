@@ -15,6 +15,7 @@ const createToken = (user: Usuario): string => {
 };
 
 const isAuth = (req: Request, response: Response, next: NextFunction) => {
+  console.log("Mirando Autorizacion")
   try {
     const authHeader = req.headers["authorization"];
     const token: string | undefined = authHeader && authHeader.split(" ")[1];

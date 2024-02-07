@@ -7,7 +7,7 @@ import CestaRepository from "../../domain/cesta.repository";
 export default class CestaRepositorySQL implements CestaRepository {
 
     async get(usuario: Usuario, estado: boolean): Promise<Cesta | Cesta[] | undefined> {
-        let Query = `SELECT * FROM Cestas WHERE usuario=${usuario.id} and estado=${estado}`;
+        let Query = `SELECT * FROM cesta WHERE usuario_id=${usuario.id} and estado=${estado}`;
         try{
             let result  = await executeQuery(Query);
             return result;
@@ -19,7 +19,7 @@ export default class CestaRepositorySQL implements CestaRepository {
 
 
     async create(usuario: Usuario): Promise<Cesta | undefined> {
-        let Query = `INSERT INTO Cestas (nombre,estado) VALUES ('${usuario.id}','${false}')`;
+        let Query = `INSERT INTO cesta (usuario_id,estado) VALUES ('${usuario.id}','${false}')`;
         try{
             let result  = await executeQuery(Query);
             return result;
@@ -30,7 +30,7 @@ export default class CestaRepositorySQL implements CestaRepository {
     }
     async add(videojuego: Videojuego, usuario: Usuario): Promise<Cesta | undefined> {
 
-        let Query = `UPDATE cesta SET videojuego = array_append(videojuego, '{"id": "'${videojuego.id}'","nombre": "'${videojuego.nombre}'"}'::JSON) WHERE estado='${false} AND usuario='${usuario.id}'`;
+        let Query = `UPDATE cesta SET videojuego = array_append(videojuego, '{"id": "'${videojuego.id}'","usuario_id": "'${videojuego.nombre}'"}'::JSON) WHERE estado='${false} AND usuario_id='${usuario.id}'`;
         try{
             let result  = await executeQuery(Query);
             return result;
