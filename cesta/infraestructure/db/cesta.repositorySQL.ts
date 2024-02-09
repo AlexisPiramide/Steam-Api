@@ -31,7 +31,7 @@ export default class CestaRepositorySQL implements CestaRepository {
     
     async add(videojuego: Videojuego, usuario: Usuario): Promise<Cesta | undefined> {
 
-        let Query = `UPDATE cesta SET videojuego = array_append(videojuego, '{"id": "'${videojuego.id}'","usuario_id": "'${videojuego.nombre}'"}'::JSON) WHERE estado='${false} AND usuario_id='${usuario.id}'`;
+        let Query = `UPDATE cesta SET videojuego = array_append(videojuego, '{"id": "'${videojuego.id}'","nombre": "'${videojuego.nombre}'"}'::JSON) WHERE estado='${false} AND usuario_id='${usuario.id}'`;
         try{
             let result  = await executeQuery(Query);
             return result;

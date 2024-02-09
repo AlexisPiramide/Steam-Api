@@ -1,12 +1,12 @@
 import express, { Request, Response } from "express";
 import {isAuth} from "../../../context/security/auth";
 
-import CestaRepository from "../../domain/cesta.repository";
-import CestaUseCases from "../../aplication/cesta.usecases";
-import CestaRepositorySQL from "../db/cesta.repositorySQL";
-import Usuario from "../../../usuario/domain/usuario";
 
-const cestasRepository: CestaRepository = new CestaRepositorySQL();
+import CestaUseCases from "../../aplication/cesta.usecases";
+import Usuario from "../../../usuario/domain/usuario";
+import CestaRepositorySQL from "../db/cesta.repositorySql";
+
+const cestasRepository: CestaRepositorySQL = new CestaRepositorySQL();
 
 const cestasUseCases: CestaUseCases = new CestaUseCases(cestasRepository);
 
@@ -35,7 +35,7 @@ router.post("/crear", isAuth, async (req: Request, res: Response) => {
     res.json(result);
 });
 
-router.post("/add", isAuth, async (req: Request, res: Response) => {
+router.patch("/add", isAuth, async (req: Request, res: Response) => {
 
     let Juego = (req.body.videojuego);
     let Usuario = (req.body.usuario);
