@@ -28,6 +28,7 @@ export default class CestaRepositorySQL implements CestaRepository {
             return undefined
         }
     }
+    
     async add(videojuego: Videojuego, usuario: Usuario): Promise<Cesta | undefined> {
 
         let Query = `UPDATE cesta SET videojuego = array_append(videojuego, '{"id": "'${videojuego.id}'","usuario_id": "'${videojuego.nombre}'"}'::JSON) WHERE estado='${false} AND usuario_id='${usuario.id}'`;
@@ -39,8 +40,9 @@ export default class CestaRepositorySQL implements CestaRepository {
             return undefined
         }
     }
+    
     update(cesta: Cesta): Promise<Cesta | undefined> {
-        let Query = `UPDATE cesta SET estado='${true}', set fecha='' WHERE id='${cesta.id}'`;
+        let Query = `UPDATE cesta SET estado = true, fecha = NOW() WHERE id = '${cesta.id}';`;
         try{
             let result  = executeQuery(Query);
             return result;
@@ -49,6 +51,7 @@ export default class CestaRepositorySQL implements CestaRepository {
             return Promise.resolve(undefined);
         }
     }
+
     delete(cesta: Cesta): Promise<Cesta | undefined> {
         let Query = `DELETE FROM cesta WHERE id='${cesta.id}'`;
         try{

@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "dev": "nodemon index.ts",
-    "swagger": "node ./swagger.js"
+    "text": ""
   },
   "author": "",
   "license": "ISC",

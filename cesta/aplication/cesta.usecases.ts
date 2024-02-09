@@ -1,10 +1,11 @@
 import Usuario from "../../usuario/domain/usuario";
 import Videojuego from "../../videojuego/domain/videojuego";
 import Cesta from "../domain/cesta";
-import CestaRepository from "../domain/cesta.repository";
+
+import CestaRepositorySQL from "../infraestructure/db/cesta.repositorySQL";
 
 export default class CestaUseCases{
-    constructor(private cestaRepository: CestaRepository) {}
+    constructor(private cestaRepository: CestaRepositorySQL) {}
 
     async get(usuario: Usuario, estado: boolean) {
         let result = await this.cestaRepository.get(usuario, estado);
